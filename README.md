@@ -1,1 +1,1 @@
-# Ulesanne_2.-TypeScript
+# Task2_TypeScript
