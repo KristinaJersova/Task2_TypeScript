@@ -20,7 +20,7 @@ To get access to the TypeScript compiler, tsc, from the command line either:
 2. Kuidas rakendada TypeScriptis interaktiivne veebirakendus, kui on task1.
 
 ### Millised koodiosad olid täielikult sinu enda kirjutatud?
-Category.ts, DiscountRule.ts, Product.ts, Review.ts, Supplier.ts, task2.html, storeData.ts, stockService.ts
+Category.ts, DiscountRule.ts, Product.ts, Review.ts, Supplier.ts, index.html, storeData.ts, stockService.ts, style.css
 
 ### Milliseid AI poolt genereeritud lahendusi pidid parandama või ümber kirjutama?
 On mingid valed nimesid, ei ole seda mida küsin.
@@ -35,4 +35,4 @@ Et kõik elementid on oma kaustas, millised võiks olla problemmid ja kuidas nei
 ☐ Vibe Coding + Mixed ☐ Deep Coding
 
 ### Lühike põhjendus (1–2 lauset):
-Mixed, sest et kasutan palju AI, et on palju vigu mis on vaja lahendada, aga ise proovin ja ei saa. Ja kirjutada mõned parandused või kood mida ma ise ei saa või ei tea kuidas alustada seda kirjutada.
+Mixed, sest et kasutan palju AI, et on palju vigu mis on vaja lahendada, aga ise proovin ja ei saa. Ja kirjutada mõned parandused või kood mida ma ise ei saa või ei tea kuidas alustada seda kirjutada. Task2 kirjutas rohkem AI, sest et ei saa aru millest alustada.
