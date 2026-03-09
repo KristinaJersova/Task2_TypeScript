@@ -1,17 +1,14 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-const Category_1 = require("./models/Category");
-const storeData_1 = require("./data/storeData");
-const storageService_1 = require("./services/storageService");
-const stockService_1 = require("./services/stockService");
-const reviewService_1 = require("./services/reviewService");
-const discountService_1 = require("./services/discountService");
-const spec_1 = require("./helpers/spec");
-// 1. Инициализация данных
-let allProducts = storageService_1.storageService.loadProducts();
+import { Category } from "./models/Category.js";
+import { products as initialProducts, reviews, discountRules } from "./data/storeData.js";
+import { storageService } from "./services/storageService.js";
+import { getStockStatus } from "./services/stockService.js";
+import { getAverageRating } from "./services/reviewService.js";
+import { getDiscountPrice } from "./services/discountService.js";
+import { parseSpecs } from "./helpers/spec.js";
+let allProducts = storageService.loadProducts();
 if (allProducts.length === 0) {
-    allProducts = storeData_1.products;
-    storageService_1.storageService.saveProducts(allProducts);
+    allProducts = initialProducts;
+    storageService.saveProducts(allProducts);
 }
 const form = document.getElementById('add-product-form');
 const productList = document.getElementById('product-list');
@@ -20,7 +17,7 @@ const sortSelect = document.getElementById('sort-select');
 function deleteProduct(id) {
     if (confirm("Delete?")) {
         allProducts = allProducts.filter(p => p.id !== id);
-        storageService_1.storageService.saveProducts(allProducts);
+        storageService.saveProducts(allProducts);
         render();
     }
 }
@@ -28,9 +25,7 @@ function render() {
     if (!productList)
         return;
     productList.innerHTML = '';
-    // Фильтрация
     let filtered = allProducts.filter(p => p.name.toLowerCase().includes(searchInput.value.toLowerCase()));
-    // СОРТИРОВКА (работает с актуальным значением из select)
     const sortCriterion = sortSelect.value;
     filtered.sort((a, b) => {
         if (sortCriterion === 'price') {
@@ -42,16 +37,16 @@ function render() {
         return a.name.localeCompare(b.name);
     });
     filtered.forEach(product => {
-        const rating = (0, reviewService_1.getAverageRating)(product.id, storeData_1.reviews);
-        const status = (0, stockService_1.getStockStatus)(product.quantity);
-        const discountPrice = (0, discountService_1.getDiscountPrice)(product.price, product.category, rating, storeData_1.discountRules);
+        const rating = getAverageRating(product.id, reviews);
+        const status = getStockStatus(product.quantity);
+        const discountPrice = getDiscountPrice(product.price, product.category, rating, discountRules);
         const card = document.createElement('div');
         card.className = 'product-card';
         const statusClass = `status-${status.toLowerCase().replace(/\s+/g, '-')}`;
         card.innerHTML = `
             <button class="delete-btn" style="float:right; cursor:pointer; background:#ff4d4d; border:none; color:white; border-radius:3px; padding:2px 6px;">✕</button>
             <h3>${product.name}</h3>
-            <p>Category: <strong>${Category_1.Category[product.category]}</strong></p>
+            <p>Category: <strong>${Category[product.category]}</strong></p>
             <div class="price-box">
                 ${discountPrice
             ? `<span style="text-decoration: line-through; color: #999;">${Number(product.price).toFixed(2)}€</span> 
@@ -70,7 +65,6 @@ function render() {
         productList.appendChild(card);
     });
 }
-// 4. Обработка формы
 form.addEventListener('submit', (e) => {
     e.preventDefault();
     const formData = new FormData(form);
@@ -79,7 +73,7 @@ form.addEventListener('submit', (e) => {
         .map(n => parseInt(n.trim()) || 0)
         .reduce((sum, val) => sum + val, 0);
     const categoryName = formData.get('category');
-    const categoryValue = Category_1.Category[categoryName];
+    const categoryValue = Category[categoryName];
     const newProduct = {
         id: Date.now(),
         name: formData.get('name'),
@@ -87,14 +81,13 @@ form.addEventListener('submit', (e) => {
         price: parseFloat(formData.get('price')) || 0,
         quantity: totalQty,
         Supplier: { id: 0, name: "Manual Entry" },
-        specifications: (0, spec_1.parseSpecs)(formData.get('specs'))
+        specifications: parseSpecs(formData.get('specs'))
     };
     allProducts.push(newProduct);
-    storageService_1.storageService.saveProducts(allProducts);
+    storageService.saveProducts(allProducts);
     render();
     form.reset();
 });
-// Слушатели
 searchInput.addEventListener('input', render);
 sortSelect.addEventListener('change', render);
 render();

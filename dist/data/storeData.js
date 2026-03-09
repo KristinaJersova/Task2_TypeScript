@@ -1,14 +1,11 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.discountRules = exports.reviews = exports.products = void 0;
-const Category_1 = require("../models/Category");
-exports.products = [
+import { Category } from "../models/Category.js";
+export const products = [
     {
         id: 1,
         name: "Smartphone",
         price: 699.99,
         quantity: 50,
-        category: Category_1.Category.Electronics,
+        category: Category.Electronics,
         Supplier: {
             id: 1,
             name: "Tech Supplies Inc.",
@@ -25,7 +22,7 @@ exports.products = [
         name: "Dell XPS 15",
         price: 1299.99,
         quantity: 4,
-        category: Category_1.Category.Electronics,
+        category: Category.Electronics,
         Supplier: {
             id: 2,
             name: "Nordic Devices"
@@ -42,7 +39,7 @@ exports.products = [
         name: "Logitech MX Master 3S",
         price: 99.50,
         quantity: 8,
-        category: Category_1.Category.Accessories,
+        category: Category.Accessories,
         Supplier: {
             id: 3,
             name: "Euro Accessories"
@@ -58,7 +55,7 @@ exports.products = [
         name: "USB-C Hub 8-in-1",
         price: 59.90,
         quantity: 0,
-        category: Category_1.Category.Accessories,
+        category: Category.Accessories,
         Supplier: {
             id: 3,
             name: "Euro Accessories"
@@ -70,7 +67,7 @@ exports.products = [
         }
     }
 ];
-exports.reviews = [
+export const reviews = [
     {
         id: 1,
         productId: 1,
@@ -97,14 +94,14 @@ exports.reviews = [
         reviewerName: "Martin"
     }
 ];
-exports.discountRules = [
+export const discountRules = [
     {
-        category: Category_1.Category.Electronics,
+        category: Category.Electronics,
         discountPercent: 10,
         minRating: 4
     },
     {
-        category: Category_1.Category.Accessories,
+        category: Category.Accessories,
         discountPercent: 5
     }
 ];

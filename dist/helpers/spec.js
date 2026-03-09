@@ -1,7 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.parseSpecs = parseSpecs;
-function parseSpecs(input) {
+export function parseSpecs(input) {
     const specs = {};
     if (!input.trim())
         return specs;

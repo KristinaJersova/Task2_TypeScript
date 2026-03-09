@@ -1,10 +1,7 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.Category = void 0;
-var Category;
+export var Category;
 (function (Category) {
     Category[Category["Electronics"] = 0] = "Electronics";
     Category[Category["Books"] = 1] = "Books";
     Category[Category["Clothing"] = 2] = "Clothing";
     Category[Category["Accessories"] = 3] = "Accessories";
-})(Category || (exports.Category = Category = {}));
+})(Category || (Category = {}));

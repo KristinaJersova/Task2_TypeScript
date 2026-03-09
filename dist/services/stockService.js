@@ -1,7 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.getStockStatus = getStockStatus;
-function getStockStatus(quantity) {
+export function getStockStatus(quantity) {
     if (quantity > 3) {
         return "In Stock";
     }

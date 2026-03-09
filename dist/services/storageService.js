@@ -1,8 +1,5 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.storageService = void 0;
 const STORAGE_KEY = "store_products";
-exports.storageService = {
+export const storageService = {
     saveProducts(products) {
         localStorage.setItem(STORAGE_KEY, JSON.stringify(products));
     },

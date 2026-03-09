@@ -1,26 +1,24 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-const storeData_1 = require("./data/storeData");
-const Category_1 = require("./models/Category");
-const stockService_1 = require("./services/stockService");
-const reviewService_1 = require("./services/reviewService");
-const discountService_1 = require("./services/discountService");
+import { products, reviews, discountRules } from "./data/storeData";
+import { Category } from "./models/Category";
+import { getStockStatus } from "./services/stockService";
+import { getAverageRating } from "./services/reviewService";
+import { getDiscountPrice } from "./services/discountService";
 let report = "Product Report:\n\n";
-storeData_1.products.forEach(product => {
+products.forEach(product => {
     report += `Name: ${product.name}\n`;
-    report += `Category: ${Category_1.Category[product.category]}\n`;
+    report += `Category: ${Category[product.category]}\n`;
     report += `Supplier: ${product.Supplier.name}\n`;
     report += `Available: ${product.quantity}\n`;
-    const status = (0, stockService_1.getStockStatus)(product.quantity);
+    const status = getStockStatus(product.quantity);
     report += `Stock status: ${status}\n`;
-    const rating = (0, reviewService_1.getAverageRating)(product.id, storeData_1.reviews);
+    const rating = getAverageRating(product.id, reviews);
     if (rating === null) {
         report += `Average rating: no reviews\n`;
     }
     else {
         report += `Average rating: ${rating.toFixed(2)}\n`;
     }
-    const discount = (0, discountService_1.getDiscountPrice)(product.price, product.category, rating, storeData_1.discountRules);
+    const discount = getDiscountPrice(product.price, product.category, rating, discountRules);
     if (discount !== null) {
         report += `Price: ${product.price.toFixed(2)} -> ${discount.toFixed(2)}\n`;
     }

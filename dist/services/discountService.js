@@ -1,7 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.getDiscountPrice = getDiscountPrice;
-function getDiscountPrice(price, category, rating, rules) {
+export function getDiscountPrice(price, category, rating, rules) {
     const rule = rules.find(r => r.category === category);
     if (!rule)
         return null;
