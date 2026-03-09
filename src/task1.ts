@@ -37,7 +37,7 @@ products.forEach(product => {
             .map(([k, v]) => `${k}=${v}`)
             .join(", ");
 
-        report += `Specs: ${specs}\n`;
+        report += `specs: ${specs}\n`;
     }
 
     report += "\n";
