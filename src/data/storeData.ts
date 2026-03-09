@@ -1,8 +1,8 @@
-import { Product } from "../models/Product";
-import { Review } from "../models/Review";
-import { Category } from "../models/Category";
-import { Supplier } from "../models/Supplier";
-import { DiscountRule } from "../models/DiscountRule";
+import { Product } from "../models/Product.js";
+import { Review } from "../models/Review.js";
+import { Category } from "../models/Category.js";
+import { Supplier } from "../models/Supplier.js";
+import { DiscountRule } from "../models/DiscountRule.js";
 
 export const products: Product[] = [
     {

@@ -1,5 +1,5 @@
-import { Category } from "./Category";
-import { Supplier } from "./Supplier";
+import { Category } from "./Category.js";
+import { Supplier } from "./Supplier.js";
 export interface Product {
     id: number;
     name: string;

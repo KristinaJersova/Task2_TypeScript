@@ -1,5 +1,5 @@
-import { DiscountRule } from "../models/DiscountRule";
-import { Category } from "../models/Category";
+import { DiscountRule } from "../models/DiscountRule.js";
+import { Category } from "../models/Category.js";
 
 export function getDiscountPrice(
     price: number,
