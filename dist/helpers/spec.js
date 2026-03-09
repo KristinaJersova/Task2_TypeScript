@@ -1,11 +1,15 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.formatSpecs = formatSpecs;
-function formatSpecs(specs) {
-    if (!specs)
-        return "";
-    const pairs = Object.entries(specs)
-        .map(([key, value]) => `${key}=${value}`)
-        .join(", ");
-    return ` | specs: ${pairs}`;
+exports.parseSpecs = parseSpecs;
+function parseSpecs(input) {
+    const specs = {};
+    if (!input.trim())
+        return specs;
+    input.split(',').forEach(pair => {
+        const [key, value] = pair.split('=').map(s => s.trim());
+        if (key && value) {
+            specs[key] = isNaN(Number(value)) ? value : Number(value);
+        }
+    });
+    return specs;
 }

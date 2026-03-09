@@ -1,10 +1,11 @@
 {
   "compilerOptions": {
-    "rootDir": "./src",
+    "target": "ES6",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
     "outDir": "./dist",
-    "target": "ES2020",
-    "module": "commonjs",
-    "sourceMap": false,
-    "strict": true
+    "rootDir": "./src",
+    "strict": true,
+    "lib": ["ES6", "DOM", "DOM.Iterable"]
   }
 }

@@ -40,7 +40,7 @@
 
                 <div class="form-group">
                     <label for="specs">Specifications (key=value, key=value)</label>
-                    <input type="text" id="specs" name="specs" placeholder="e.g., processor=Intel i7, ram=16GB">
+                    <input type="text" id="specs" name="specs" placeholder="e.g., color=red, size=XL">
                 </div>
 
                 <button type="submit" id="add-btn">Add Product</button>
@@ -49,12 +49,30 @@
 
         <hr>
 
+        <section class="filters-section" style="display: flex; gap: 20px; margin-bottom: 20px;">
+            <div class="form-group" style="flex: 1;">
+                <label>Filter by name:</label>
+                <input type="text" id="search-input" placeholder="Search products...">
+            </div>
+            <div class="form-group" style="flex: 1;">
+                <label>Sort by:</label>
+                <select id="sort-select">
+                    <option value="name">Name</option>
+                    <option value="price">Price</option>
+                    <option value="quantity">Quantity</option>
+                </select>
+            </div>
+        </section>
+
         <section class="display-section">
-            <div id="product-list" class="product-grid">
-                </div>
+            <div id="product-list" class="product-grid"></div>
         </section>
     </div>
 
+    <script>
+        var exports = {};
+    </script>
+    
     <script type="module" src="./dist/task2.js"></script>
 </body>
 </html>
