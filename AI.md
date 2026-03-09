@@ -17,7 +17,7 @@ To get access to the TypeScript compiler, tsc, from the command line either:
 - Use npm install typescript to first add TypeScript to your project before using npx
 - Use yarn to avoid accidentally running code from un-installed packages 
 
-2. Kuidas rakendada veebipoe jaoks TypeScriptis abifunktsiooni formatSpecs.
+2. Kuidas rakendada TypeScriptis interaktiivne veebirakendus, kui on task1.
 
 ### Millised koodiosad olid täielikult sinu enda kirjutatud?
 Category.ts, DiscountRule.ts, Product.ts, Review.ts, Supplier.ts, task2.html, storeData.ts, stockService.ts
