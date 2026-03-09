@@ -7,7 +7,6 @@ import { getDiscountPrice } from "./services/discountService.js";
 import { parseSpecs } from "./helpers/spec.js";
 import { Product } from "./models/Product.js";
 
-// 1. Инициализация данных
 let allProducts: Product[] = storageService.loadProducts();
 
 if (allProducts.length === 0) {
@@ -32,12 +31,10 @@ function render(): void {
     if (!productList) return;
     productList.innerHTML = '';
 
-    // Фильтрация
     let filtered = allProducts.filter(p => 
         p.name.toLowerCase().includes(searchInput.value.toLowerCase())
     );
 
-    // СОРТИРОВКА
     const sortCriterion = sortSelect.value;
     filtered.sort((a, b) => {
         if (sortCriterion === 'price') {
@@ -85,7 +82,6 @@ function render(): void {
     });
 }
 
-// 4. Обработка формы
 form.addEventListener('submit', (e: Event) => {
     e.preventDefault();
     const formData = new FormData(form);
@@ -114,7 +110,6 @@ form.addEventListener('submit', (e: Event) => {
     form.reset();
 });
 
-// Слушатели
 searchInput.addEventListener('input', render);
 sortSelect.addEventListener('change', render);
 
