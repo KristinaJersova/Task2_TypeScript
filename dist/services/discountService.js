@@ -9,5 +9,5 @@ function getDiscountPrice(price, category, rating, rules) {
         return null;
     }
     const discount = price * (rule.discountPercent / 100);
-    return price - discount;
+    return Number((price - discount).toFixed(2));
 }
